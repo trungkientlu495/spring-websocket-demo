@@ -3,21 +3,18 @@
 var join_group = document.querySelector('#join-group');
 join_group.addEventListener('submit', connect, true);
 var stompClient = null;
-var username = "kienmnpq";
+var username = "Kiên đẹp zai";
 
 
 
 function connect(event) {
-    //alert("XXXadd");
     if(username) {
         var socket = new SockJS('/ws');
-        alert("XXX");
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError);
 
     }
-    alert("XXXa");
     event.preventDefault();
 
 }
@@ -28,19 +25,34 @@ function onError(error) {
 
 
 function onConnected() {
+    var commenta = {
+        username: username,
+        comment: "mnpq"
+    }
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
 
     // Tell your username to the server
     stompClient.send("/app/comment.create",
-        {},JSON.stringify(username)
+        {},JSON.stringify(commenta)
     )
 
 }
 
 function onMessageReceived(payload) {
-    var message = JSON.stringify(payload.body);
-    alert(message);
+    var abc = JSON.parse(payload.body);
+    alert(abc.username);
+    var commentSection = document.getElementById('comment-parent');
+    commentSection.innerHTML += `
+    <div id="comment">
+        <img src="user-avatar.jpg" alt="Avatar" class="avatar">
+        <div class="comment-content">
+            <span class="username">${abc.username}</span>
+            <p class="comment-text">${abc.comment}</p>
+        </div>
+    </div>
+`;
+
 }
 
 
