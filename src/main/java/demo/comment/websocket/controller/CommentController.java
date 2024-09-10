@@ -16,7 +16,7 @@ import java.util.Date;
 @Slf4j
 public class CommentController {
     public final CommentRepo commentRepo;
-    @MessageMapping("/comment.create")
+    @MessageMapping("/comment/post")
     @SendTo("/topic/public")
     public String postComment(@Payload String comment) {
 //        Comment newComment = new Comment();
@@ -27,7 +27,7 @@ public class CommentController {
         return comment;
     }
 
-    @MessageMapping("/comment.add")
+    @MessageMapping("/comment/add")
     @SendTo("/topic/public")
     public String addGroup(@Payload String comment) {
 

@@ -34,7 +34,7 @@ function onConnected() {
     stompClient.subscribe('/topic/public', onMessageReceived);
 
     // Tell your username to the server
-    stompClient.send("/app/comment.create",
+    stompClient.send("/app/comment/post",
         {},JSON.stringify(commenta)
     )
 
@@ -53,9 +53,13 @@ function onMessageReceived(payload) {
     </div>
 `;
     commentInput.value= "";
+    disConnect();
+
+}
+
+function disConnect() {
     stompClient.disconnect(function() {
     });
-
 }
 
 
