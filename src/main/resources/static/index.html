@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="main">
+    <h5 style="text-align: center;font-size: 20px;">Demo Websocket Funcition Comment</h5>
+    <form id="join-group" name="join-group">
+        <input type="text" name="bbb" placeholder="mmm">
+        <button type="submit">Bình luận</button>
+    </form>
+    <h5 style="padding: 10px;"></h5>
+    <form id="post-comment" style="display: flex;">
+        <input type="text" placeholder="Input comment" style="padding: 5px;width: 500px;">
+        <button type="submit">Bình luận</button>
+    </form>
+</div>
+
+
+
+<style>
+    #main {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
