@@ -1,6 +1,7 @@
 'use strict'
 
 var join_group = document.querySelector('#join-group');
+var commentInput = document.querySelector(  '#commentInput');
 join_group.addEventListener('submit', connect, true);
 var stompClient = null;
 var username = "Kiên đẹp zai";
@@ -41,7 +42,6 @@ function onConnected() {
 
 function onMessageReceived(payload) {
     var abc = JSON.parse(payload.body);
-    alert(abc.username);
     var commentSection = document.getElementById('comment-parent');
     commentSection.innerHTML += `
     <div id="comment">
@@ -52,6 +52,9 @@ function onMessageReceived(payload) {
         </div>
     </div>
 `;
+    commentInput.value= "";
+    stompClient.disconnect(function() {
+    });
 
 }
 
